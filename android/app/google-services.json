@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279491510509",
+    "project_id": "e-com-98eba",
+    "storage_bucket": "e-com-98eba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279491510509:android:1bbf5d18f9bfeaa8b40ce4",
+        "android_client_info": {
+          "package_name": "com.example.e_com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC46X2trsCOvwODRXajOgdKGw6UMMwiJVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
