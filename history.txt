@@ -1,0 +1,7 @@
+flutter pub add firebase_auth
+flutter pub add cloud_firestore
+flutter pub add flutter_easyloading
+history
+doskey /history > history.txt
+history
+doskey /history > history.txt

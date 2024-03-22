@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:e_com/controllers/googel-sign-in-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -7,7 +8,10 @@ import 'package:lottie/lottie.dart';
 import '../../utils/app-constant.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+   WelcomeScreen({super.key});
+
+  final GoogleSignInController _googleSignInController =
+      Get.put(GoogleSignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,6 @@ class WelcomeScreen extends StatelessWidget {
                     color: AppConstant.appScendoryCotor,
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextButton.icon(
-                    onPressed: () {},
                     icon: Image.asset(
                       'assets/images/google.png',
                       width: Get.width / 12,
@@ -51,11 +54,15 @@ class WelcomeScreen extends StatelessWidget {
                     label: Text(
                       "Sign in wiht google",
                       style: TextStyle(color: AppConstant.appTextCotor),
-                    )),
+                    ),
+                    onPressed: () {
+                      _googleSignInController.signInWithGoogle();
+                    },
+                    ),
               ),
             ),
             SizedBox(
-              height: Get.height / 45 ,
+              height: Get.height / 45,
             ),
             Material(
               child: Container(

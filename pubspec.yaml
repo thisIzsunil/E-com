@@ -40,6 +40,10 @@ dependencies:
   device_preview: ^1.1.0
   flutter_keyboard_visibility: ^6.0.0
   firebase_core: ^2.27.0
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:
