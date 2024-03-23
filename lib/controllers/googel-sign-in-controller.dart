@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+
 class GoogleSignInController extends GetxController {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -14,6 +15,7 @@ class GoogleSignInController extends GetxController {
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
+          
       if (googleSignInAccount != null) {
         EasyLoading.show(status: "Please wait...");
         final GoogleSignInAuthentication googleSignInAuthentication =
@@ -41,14 +43,17 @@ class GoogleSignInController extends GetxController {
             isAdmin: false,
             isActive: true,
             createdOn: DateTime.now(),
+            city: '',
           );
-///implementing query 
+
+          ///implementing query
           await FirebaseFirestore.instance
               .collection('users')
               .doc(user.uid)
               .set(userModel.toMap());
-            EasyLoading.dismiss();  
-              Get.offAll(()=> MainScreen());   //move to login screen  after completely login 
+          EasyLoading.dismiss();
+          Get.offAll(() =>
+              MainScreen()); //move to login screen  after completely login
         }
       }
     } catch (e) {

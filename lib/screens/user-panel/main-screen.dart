@@ -1,8 +1,10 @@
 import 'package:e_com/screens/auth-ui/welcome-screen.dart';
 import 'package:e_com/utils/app-constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -11,6 +13,10 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: AppConstant.appScendoryCotor,
+          statusBarBrightness: Brightness.light
+        ),
         backgroundColor:AppConstant.appMainCotor ,
         title:Text(AppConstant.appMainName),
         centerTitle: true,

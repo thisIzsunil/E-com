@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:e_com/controllers/googel-sign-in-controller.dart';
+import 'package:e_com/screens/auth-ui/sign-in-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -8,7 +9,7 @@ import 'package:lottie/lottie.dart';
 import '../../utils/app-constant.dart';
 
 class WelcomeScreen extends StatelessWidget {
-   WelcomeScreen({super.key});
+  WelcomeScreen({super.key});
 
   final GoogleSignInController _googleSignInController =
       Get.put(GoogleSignInController());
@@ -46,19 +47,19 @@ class WelcomeScreen extends StatelessWidget {
                     color: AppConstant.appScendoryCotor,
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextButton.icon(
-                    icon: Image.asset(
-                      'assets/images/google.png',
-                      width: Get.width / 12,
-                      height: Get.height / 12,
-                    ),
-                    label: Text(
-                      "Sign in wiht google",
-                      style: TextStyle(color: AppConstant.appTextCotor),
-                    ),
-                    onPressed: () {
-                      _googleSignInController.signInWithGoogle();
-                    },
-                    ),
+                  icon: Image.asset(
+                    'assets/images/google.png',
+                    width: Get.width / 12,
+                    height: Get.height / 12,
+                  ),
+                  label: Text(
+                    "Sign in with google",
+                    style: TextStyle(color: AppConstant.appTextCotor),
+                  ),
+                  onPressed: () {
+                    _googleSignInController.signInWithGoogle();
+                  },
+                ),
               ),
             ),
             SizedBox(
@@ -72,7 +73,6 @@ class WelcomeScreen extends StatelessWidget {
                     color: AppConstant.appScendoryCotor,
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextButton.icon(
-                    onPressed: () {},
                     icon: Image.asset(
                       'assets/images/gmail.png',
                       width: Get.width / 12,
@@ -81,7 +81,13 @@ class WelcomeScreen extends StatelessWidget {
                     label: Text(
                       "Sign in with email",
                       style: TextStyle(color: AppConstant.appTextCotor),
-                    )),
+                    ),
+                    onPressed: () {
+                      Get.off(()=> SignInScreen());
+                    },
+                    
+                    ),
+                    
               ),
             ),
           ],

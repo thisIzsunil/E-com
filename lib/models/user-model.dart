@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class UserModel {
   final String uId;
   final String username;
@@ -11,42 +13,44 @@ class UserModel {
   final bool isAdmin;
   final bool isActive;
   final dynamic createdOn;
+  final String city;
 
-  UserModel(
-      {required this.uId,
-      required this.username,
-      required this.email,
-      required this.phone,
-      required this.userImg,
-      required this.userDeviceToken,
-      required this.country,
-      required this.userAddress,
-      required this.street,
-      required this.isAdmin,
-      required this.isActive,
-      required this.createdOn});
+  UserModel({
+    required this.uId,
+    required this.username,
+    required this.email,
+    required this.phone,
+    required this.userImg,
+    required this.userDeviceToken,
+    required this.country,
+    required this.userAddress,
+    required this.street,
+    required this.isAdmin,
+    required this.isActive,
+    required this.createdOn,
+    required this.city,
+  });
 
-  //serialize the usemodel instance to a json map
-
+  // Serialize the UserModel instance to a JSON map
   Map<String, dynamic> toMap() {
     return {
       'uId': uId,
-      'usernname': username,
+      'username': username,
       'email': email,
       'phone': phone,
       'userImg': userImg,
       'userDeviceToken': userDeviceToken,
-      'countyr': country,
+      'country': country,
       'userAddress': userAddress,
       'street': street,
       'isAdmin': isAdmin,
       'isActive': isActive,
       'createdOn': createdOn,
+      'city': city,
     };
   }
 
-  //created a usermodel  instance froma json map
-
+  // Create a UserModel instance from a JSON map
   factory UserModel.fromMap(Map<String, dynamic> json) {
     return UserModel(
       uId: json['uId'],
@@ -61,6 +65,7 @@ class UserModel {
       isAdmin: json['isAdmin'],
       isActive: json['isActive'],
       createdOn: json['createdOn'].toString(),
+      city: json['city'],
     );
   }
 }
