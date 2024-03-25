@@ -1,11 +1,9 @@
-import 'package:e_com/screens/auth-ui/welcome-screen.dart';
 import 'package:e_com/utils/app-constant.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_com/widgets/banner-widget.dart';
+import 'package:e_com/widgets/custom-drawer-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -14,28 +12,35 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: AppConstant.appTextCotor),
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: AppConstant.appScendoryCotor,
-          statusBarBrightness: Brightness.light
-        ),
-        backgroundColor:AppConstant.appMainCotor ,
-        title:Text(AppConstant.appMainName),
-        centerTitle: true,
-        actions: [
-          GestureDetector(
-            onTap: ()async {
-              GoogleSignIn googleSignIn = GoogleSignIn();
-              FirebaseAuth _auth =FirebaseAuth.instance;
-              await _auth.signOut();
-              await googleSignIn.signOut();
-             Get.offAll(()=> WelcomeScreen()); 
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.logout),
-            ),
+            statusBarColor: AppConstant.appScendoryCotor,
+            statusBarBrightness: Brightness.light),
+        backgroundColor: AppConstant.appMainCotor,
+        title: Text(
+          AppConstant.appMainName,
+          style: TextStyle(
+            color: AppConstant.appTextCotor,
           ),
-        ]
+        ),
+        centerTitle: true,
+      ),
+      drawer: DrawerWidget(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height / 90.0,
+              ),
+              Text("Ali"),
+
+              //banners
+              BannerWidget(),
+            ],
+          ),
+        ),
       ),
     );
   }

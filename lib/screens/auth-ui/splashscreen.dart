@@ -2,7 +2,11 @@
 
 import 'dart:async';
 
+import 'package:e_com/controllers/get-user-data-controller.dart';
+import 'package:e_com/screens/admin-panel/admin-main-screen.dart';
 import 'package:e_com/screens/auth-ui/welcome-screen.dart';
+import 'package:e_com/screens/user-panel/main-screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -16,15 +20,33 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends State<SplashScreen> {
+  User? user = FirebaseAuth.instance.currentUser;
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds:3),(){
-      Get.offAll(()=>WelcomeScreen());
+    Timer(Duration(seconds: 3), () {
+      loggdin(context);
     });
-    
+  }
+///// after this 3 seconds below code decide to go where according to user credentials
+
+  Future<void> loggdin(BuildContext context) async {
+    ///initializing controller
+    if (user != null) {
+      final GetUserDataController getUserDataController =
+          Get.put(GetUserDataController());
+      var userData = await getUserDataController.getUserData(user!.uid);
+      if (userData[0]['isAdmin'] == true) {
+        Get.offAll(() => AdminMainScreen());
+      }else{
+        Get.offAll(()=> MainScreen());
+
+      }
+    } else {
+      Get.to(() =>
+          WelcomeScreen()); //if user is not loggedin already or null it  got to welcome screen
+    }
   }
 
   @override
